@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy #dependent destroy deletes microposts if user gets deleted
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email #call back methods
   before_create :create_activation_digest
@@ -15,6 +16,10 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+
+  def feed
+     Micropost.where("user_id = ?", id)#the question mark ensures the id is properly escaped to protect from sql injections
   end
 
   # Returns a random token.
