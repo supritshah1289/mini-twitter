@@ -1,5 +1,15 @@
 class User < ApplicationRecord
   has_many :microposts, dependent: :destroy #dependent destroy deletes microposts if user gets deleted
+  has_many :active_relationships, class_name: "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent: :destroy
+
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email #call back methods
   before_create :create_activation_digest
@@ -19,7 +29,21 @@ class User < ApplicationRecord
   end
 
   def feed
-     Micropost.where("user_id = ?", id)#the question mark ensures the id is properly escaped to protect from sql injections
+     Micropost.where("user_id = IN (?) OR user_id = ?",following_ids,id) #the question mark ensures the id is properly escaped to protect from sql injections
+  end
+
+
+
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   # Returns a random token.
