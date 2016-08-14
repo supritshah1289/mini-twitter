@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+    has_many :messages
+  has_many :chatrooms, through: :messages
+
+  validates :email, presence: true, uniqueness: true
   has_many :microposts, dependent: :destroy #dependent destroy deletes microposts if user gets deleted
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
