@@ -4,20 +4,20 @@ The application is for developers. Developers can connect with each other. They 
 
 ##User story
 ###Guest##
-*Guest can sign up for joining Developers Network
+* Guest can sign up for joining Developers Network
 
 ###User###
-*Login can login/logout
-*User can create micropost to post to their dashboard
-*User can post images associated with their micropost
-*User can follow/unfollow other user
-*User can create chatroom
-*User can join chatrooms available 
+* Login can login/logout
+* User can create micropost to post to their dashboard
+* User can post images associated with their micropost
+* User can follow/unfollow other user
+* User can create chatroom
+* User can join chatrooms available 
 
 ##Technologies##
-*Ruby on rails
-*Postgresql
-*Heroku
+* Ruby on rails
+* Postgresql
+* Heroku
 
 ##Installation##
 1. Fork the repo from github
