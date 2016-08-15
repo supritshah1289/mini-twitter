@@ -29,5 +29,5 @@ The application is for developers. Developers can connect with each other. They 
 
 
 ##Special Thanks##
-[Michael Hartl](https://www.railstutorial.org/)
+[Michael Hartl](https://www.railstutorial.org/) | 
 [Sophie DeBenedetto](https://blog.heroku.com/real_time_rails_implementing_websockets_in_rails_5_with_action_cable)
