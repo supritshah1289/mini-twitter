@@ -7,7 +7,7 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'https://thawing-tundra-70303.herokuapp.com/'
+  host = 'https://developers-network.herokuapp.com/'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
@@ -58,8 +58,8 @@ Rails.application.configure do
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
-  config.action_cable.url = 'wss://thawing-tundra-70303.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://thawing-tundra-70303.herokuapp.com', /http:\/\/evening-sierra-60192.herokuapp.*/ ]
+  config.action_cable.url = 'wss://developers-network.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://developers-network.herokuapp.com', /http:\/\/developers-network.herokuapp.*/ ]
 
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
